@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_default">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/height_pick_item_image"
+            android:layout_height="@dimen/height_pick_item_image"
+            android:contentDescription="@string/label_itunes_albums"
+            android:src="@drawable/ic_android"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvArtistName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?textAppearanceHeadline5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:text="Jack Johnson" />
+
+        <TextView
+            android:id="@+id/tvCollectionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/space_default"
+            android:textAppearance="?textAppearanceCaption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvArtistName"
+            tools:text="Jack Johnson &amp; Friends - Best of Kokua Festival (A Benefit for the Kokua Hawaii Foundation)" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bookmarkBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:padding="@dimen/space_default"
+            android:src="@drawable/ic_bookmark_add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:tint="@color/secondary" />
+
+        <View
+            android:id="@+id/divider"
+            style="@style/Widget.Keysoc.CodingTest.Divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/general_divider"
+            app:layout_constraintTop_toBottomOf="@+id/tvCollectionName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

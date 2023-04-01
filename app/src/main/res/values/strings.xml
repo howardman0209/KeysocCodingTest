@@ -3,4 +3,8 @@
 
     <string name="label_keysoc_coding_test">Keysoc Coding Test</string>
     <string name="label_loading">Loading…</string>
+    <string name="label_itunes_albums">Itunes albums</string>
+
+    <!--  Button Text  -->
+    <string name="button_bookmarked">Bookmarked</string>
 </resources>

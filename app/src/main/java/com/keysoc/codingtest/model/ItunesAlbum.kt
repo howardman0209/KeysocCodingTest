@@ -6,6 +6,7 @@ data class ItunesAlbum(
     val wrapperType: String? = null,
     val collectionType: String? = null,
     val artistId: Long? = null,
+    val collectionId: Long? = null,
     val amgArtistId: Long? = null,
     val artistName: String? = null,
     val collectionName: String? = null,

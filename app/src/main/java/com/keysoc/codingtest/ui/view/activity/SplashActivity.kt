@@ -18,7 +18,7 @@ class SplashActivity : MVVMActivity<SplashViewModel, ActivitySplashBinding>() {
 
         CoroutineScope(Dispatchers.Main).launch {
             delay(2000)
-            val intent = Intent(applicationContext, StyleActivity::class.java)
+            val intent = Intent(applicationContext, AlbumsListActivity::class.java)
             startActivity(intent)
             finish()
         }

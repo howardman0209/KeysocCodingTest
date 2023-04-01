@@ -10,7 +10,6 @@ class StyleActivity : MVVMActivity<StyleViewModel, ActivityStyleBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getItunesAlbum()
     }
 
     override fun getViewModelInstance(): StyleViewModel = StyleViewModel()
