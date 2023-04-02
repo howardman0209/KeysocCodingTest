@@ -29,7 +29,9 @@ class AlbumsListActivity : MVVMActivity<AlbumsListViewModel, ActivityAlbumsListB
         )
 
         viewModel.displayAlbumsList.observe(this) {
-            adapter.setData(it)
+            it?.let {
+                adapter.setData(it)
+            }
         }
 
         binding.rvAlbums.adapter = adapter

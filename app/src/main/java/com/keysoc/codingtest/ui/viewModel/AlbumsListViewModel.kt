@@ -55,11 +55,15 @@ class AlbumsListViewModel : BaseViewModel() {
             albumCollectionIdList = bookmarkedCollectionIdList
         )
         PreferencesUtil.saveBookmark(context, bookmark)
+
+        if (isDisplayBookmark) {
+            displayBookmarkedAlbum()
+        }
     }
 
     fun displayBookmarkedAlbum() {
-        val fullAlbumList = displayAlbumsList.value
-        val bookmarkedAlbums = fullAlbumList?.let {
+        val displayAlbumList = displayAlbumsList.value
+        val bookmarkedAlbums = displayAlbumList?.let {
             it.filter { album -> bookmarkedCollectionIdList.contains(album.collectionId) }
         }
         Log.d(DEBUG, "bookmarkedAlbums: $bookmarkedAlbums")
