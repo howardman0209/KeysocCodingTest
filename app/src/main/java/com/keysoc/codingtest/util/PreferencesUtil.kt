@@ -2,6 +2,8 @@ package com.keysoc.codingtest.util
 
 import android.content.Context
 import android.os.Build
+import com.google.gson.Gson
+import com.keysoc.codingtest.model.Bookmark
 import java.util.Locale
 
 object PreferencesUtil {
@@ -37,6 +39,22 @@ object PreferencesUtil {
         if (context == null) return ""
         val localPref = context.getSharedPreferences(localPrefFileName, Context.MODE_PRIVATE)
         return localPref.getString(prefKey, "").orEmpty()
+    }
+
+    fun saveBookmark(context: Context, bookmark: Bookmark) {
+        val localPref = context.getSharedPreferences(localPrefFileName, Context.MODE_PRIVATE)
+        localPref?.edit()?.putString(bookmarkPrefKey, Gson().toJson(bookmark))?.apply()
+    }
+
+    fun getBookmark(context: Context): Bookmark {
+        val localPref = context.getSharedPreferences(localPrefFileName, Context.MODE_PRIVATE)
+        val bookmarkStr = localPref.getString(bookmarkPrefKey, null)
+        val bookmark = try {
+            Gson().fromJson(bookmarkStr, Bookmark::class.java)
+        } catch (e: java.lang.Exception) {
+            null
+        }
+        return bookmark ?: Bookmark(albumCollectionIdList = emptyList())
     }
 
 }

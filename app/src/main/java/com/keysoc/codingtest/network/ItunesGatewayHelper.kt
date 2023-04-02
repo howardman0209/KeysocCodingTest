@@ -12,7 +12,8 @@ object ItunesGatewayHelper {
     fun searchAlbum(
         term: String,
         entity: String = "album",
-        liveData: MutableLiveData<List<ItunesAlbum>>
+        onSuccess: (albumsList: List<ItunesAlbum>) -> Unit,
+        catchError: (error: Throwable) -> Unit,
     ): Disposable {
         return ApiManager.create<ItunesGatewayService>(ITUNES_BASE_URL).searchAlbum(
             term = term,
@@ -21,9 +22,13 @@ object ItunesGatewayHelper {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 Log.d("itunesSearch", "response body: ${it.body()}")
-                liveData.value = it.body()?.results
+                it.body()?.results?.let { albumsList -> onSuccess.invoke(albumsList) }
+                    ?: run {
+                        onSuccess.invoke(emptyList())
+                    }
             }, {
                 Log.d("itunesSearch", "Error: ${it.message}")
+                catchError.invoke(it)
             })
     }
 }

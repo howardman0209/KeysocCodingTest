@@ -8,6 +8,7 @@ const val DEBUG = "DEBUG"
 const val localPrefFileName = "localPref"
 const val localeLanguagePrefKey = "localeLanguage"
 const val localeCountryPrefKey = "localeCountry"
+const val bookmarkPrefKey = "bookmark"
 
 //API failure Timeout
 const val CONNECTION_TIMEOUT = 60000L

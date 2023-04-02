@@ -1,11 +1,13 @@
 package com.keysoc.codingtest.ui.viewAdapter
 
+import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.keysoc.codingtest.model.ItunesAlbum
 import com.keysoc.codingtest.ui.viewHolder.AlbumViewHolder
+import com.keysoc.codingtest.util.PreferencesUtil
 
-class AlbumsListAdapter(private val listener: AlbumViewListener) :
+class AlbumsListAdapter(private val listener: AlbumViewListener, val context: Context) :
     RecyclerView.Adapter<AlbumViewHolder>() {
     private val albumsList: ArrayList<ItunesAlbum> = arrayListOf()
 
@@ -19,7 +21,8 @@ class AlbumsListAdapter(private val listener: AlbumViewListener) :
     override fun getItemCount(): Int = albumsList.size
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
-        holder.bind(albumsList[holder.adapterPosition], holder.adapterPosition, false, listener)
+        val isBookmarked = PreferencesUtil.getBookmark(context).albumCollectionIdList?.contains(albumsList[position].collectionId) ?: false
+        holder.bind(albumsList[holder.adapterPosition], holder.adapterPosition, isBookmarked, listener)
     }
 
     fun setData(dataList: List<ItunesAlbum>) {
